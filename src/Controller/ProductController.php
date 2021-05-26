@@ -80,4 +80,21 @@ class ProductController extends AbstractController
             ]);
         }
     }
+    /**
+     * @Route("/product/remove/{id}", name="remove_a_recipe")
+     */
+    public function removeProduct($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+            if(!$product) {
+                throw $this->createNotFoundException('Ei löyvy tuotetta tuolla tunnuksella ' . $id);
+            } else {
+                $entityManager->remove($product);
+                $entityManager->flush();
+
+                return $this->json([
+                    'message'=>'Poistettiin resepti jonka id ' . $id
+                ]);
+            }
+    }
 }
