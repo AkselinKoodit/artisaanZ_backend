@@ -79,7 +79,6 @@ class ProductController extends AbstractController
                 'hinta'=> $product->getHinta(),
                 'artisaani'=> $product->getArtisaani(),
                 'kategoria'=> $product->getKategoria()
-
             ]);
         }
     }
