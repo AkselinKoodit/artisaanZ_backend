@@ -44,16 +44,16 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/add", name="add_new_product", methods={"POST"})
      */
-    public function addProduct(){
+    public function addProduct(Request $request){
         $entityManager = $this->getDoctrine()->getManager();
-
+        $data = json_decode($request->getContent(),true);
         $newProduct = new Product();
-        $newProduct->setNimi('Vehnäleipä');
-        $newProduct->setArtisaani('Aksu');
-        $newProduct->setHinta(8);
-        $newProduct->setKategoria("ruoka");
-        $newProduct->setKuva((array)'[https://cdn.valio.fi/mediafiles/6a36f3fc-3862-4dea-a19f-5a1dba8822f6/1440x1080-cms-content-default-hero)]');
-        $newProduct->setKuvaus('Herkullinen vehnäleipä leivottu hapanjuureen');
+        $newProduct->setNimi($data["nimi"]);
+        $newProduct->setArtisaani($data["artisaani"]);
+        $newProduct->setHinta($data["hinta"]);
+        $newProduct->setKategoria($data["kategoria"]);
+        $newProduct->setKuva($data["kuva"]);
+        $newProduct->setKuvaus($data["kuvaus"]);
 
         $entityManager->persist($newProduct);
         $entityManager->flush();
@@ -61,13 +61,23 @@ class ProductController extends AbstractController
         return new Response('adding new product...' . $newProduct->getId());
     }
     /**
-     * @Route("/product/{id}", name="get-a-product", methods={"GET"})
+     * @Route("/product/find/{id}", name="get-a-product", methods={"GET"})
      */
-    public function product($id, Request $request) {
+    public function findProduct($id, Request $request) {
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+        if(!$product) {
+            throw $this->createNotFoundException('Ei mokomaa tuotetta tuolla tunnuksella ' . $id);
+        } else {
+            return $this->json([
+                'id'=> $product->getId(),
+                'nimi'=> $product->getNimi(),
+                'kuva'=> $product->getKuva(),
+                'kuvaus'=> $product->getKuvaus(),
+                'hinta'=> $product->getHinta(),
+                'artisaani'=> $product->getArtisaani(),
+                'kategoria'=> $product->getKategoria()
 
-        return $this->json([
-            'message'=>'Requesting recipe with id'. $id,
-            'page'=> $request->query->get('page')
-        ]);
+            ]);
+        }
     }
 }
