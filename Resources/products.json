@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": 1,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/P3270516.JPG"
       ],
@@ -11,6 +12,7 @@
       "kategoria": "Pussukka"
     },
     {
+      "id": 2,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/P3270542.JPG"
       ],
@@ -21,6 +23,7 @@
       "kategoria": "Pussukka"
     },
     {
+      "id": 3,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/P3280600.JPG"
       ],
@@ -31,6 +34,7 @@
       "kategoria": "laukut"
     },
     {
+      "id": 4,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/P3280617.JPG"
       ],
@@ -41,6 +45,7 @@
       "kategoria": "laukut"
     },
     {
+      "id": 5,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/P3310634.JPG"
       ],
@@ -51,6 +56,7 @@
       "kategoria": "laukut"
     },
     {
+      "id": 6,
       "kuva": [
         "https://public.bc.fi/s2100154/Kuvat/PB170422.JPG"
       ],

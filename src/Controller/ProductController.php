@@ -21,6 +21,7 @@ class ProductController extends AbstractController
      * @Route("/product/{id}", name="get-a-product", methods={"GET"})
      */
     public function product($id, Request $request) {
+
         return $this->json([
             'message'=>'Requesting recipe with id'. $id,
             'page'=> $request->query->get('page')
