@@ -38,7 +38,8 @@ class ProductController extends AbstractController
                 'artisaani'=>$product->getArtisaani(),
                 'kuvaus'=>$product->getKuvaus(),
                 'hinta'=>$product->getHinta(),
-                'kategoria'=>$product->getKategoria()
+                'kategoria'=>$product->getKategoria(),
+                'id'=>$product->getId()
             );
         }
         return $this->json($response);
@@ -68,7 +69,7 @@ class ProductController extends AbstractController
     public function findProduct($id, Request $request) {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
         if(!$product) {
-            throw $this->createNotFoundException('Ei mokomaa tuotetta tuolla tunnuksella ' . $id);
+            throw $this->createNotFoundException('Eipä löydy tuotetta mokomalla tunnuksella, ' . $id);
         } else {
             return $this->json([
                 'id'=> $product->getId(),
