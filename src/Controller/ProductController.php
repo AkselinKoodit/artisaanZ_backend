@@ -14,23 +14,35 @@ class ProductController extends AbstractController
     public function index(): Response
     {
         return $this->json([
-            'message' => 'Welcome to your new controller!',
+            'message' => 'Hi! This is the Product controller fo ArtesaanZ!',
             'path' => 'src/Controller/ProductController.php',
         ]);
     }
 
 
     /**
-     * @Route("/products/all", methods={"GET"})
+     * @Route("/product/all", name="get_all_products", methods={"GET"})
      */
     public function getAllProducts() {
-        $rootPath = $this->getParameter('kernel.project_dir');
-        $products = file_get_contents($rootPath . '/Resources/products.json');
-        $decodedProducts = json_decode($products, true);
-        return $this->json($decodedProducts);
+        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+//        $rootPath = $this->getParameter('kernel.project_dir');
+//        $products = file_get_contents($rootPath . '/Resources/products.json');
+//        $decodedProducts = json_decode($products, true);
+        $response=[];
+        foreach($products as $product) {
+            $response[] = array(
+                'nimi'=>$product->getNimi(),
+                'kuva'=>$product->getKuva(),
+                'artisaani'=>$product->getArtisaani(),
+                'kuvaus'=>$product->getKuvaus(),
+                'hinta'=>$product->getHinta(),
+                'kategoria'=>$product->getKategoria()
+            );
+        }
+        return $this->json($response);
     }
     /**
-     * @Route("/product/add", name="add_new_product")
+     * @Route("/product/add", name="add_new_product", methods={"POST"})
      */
     public function addProduct(){
         $entityManager = $this->getDoctrine()->getManager();
