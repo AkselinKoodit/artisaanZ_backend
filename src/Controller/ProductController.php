@@ -35,7 +35,7 @@ class ProductController extends AbstractController
             $response[] = array(
                 'nimi'=>$product->getNimi(),
                 'kuva'=>$product->getKuva(),
-                'artesaaani'=>$product->getArtesaani(),
+                'artesaani'=>$product->getArtesaani(),
                 'kuvaus'=>$product->getKuvaus(),
                 'hinta'=>$product->getHinta(),
                 'kategoria'=>$product->getKategoria(),
