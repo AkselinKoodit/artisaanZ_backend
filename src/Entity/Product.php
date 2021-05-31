@@ -40,7 +40,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $artisaani;
+    private $artesaani;
 
     /**
      * @ORM\Column(type="string", length=60)
@@ -100,14 +100,14 @@ class Product
         return $this;
     }
 
-    public function getArtisaani(): ?string
+    public function getArtesaani(): ?string
     {
-        return $this->artisaani;
+        return $this->artesaani;
     }
 
-    public function setArtisaani(string $artisaani): self
+    public function setArtesaani(string $artesaani): self
     {
-        $this->artisaani = $artisaani;
+        $this->artesaani = $artesaani;
 
         return $this;
     }

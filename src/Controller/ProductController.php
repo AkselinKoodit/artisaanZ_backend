@@ -35,7 +35,7 @@ class ProductController extends AbstractController
             $response[] = array(
                 'nimi'=>$product->getNimi(),
                 'kuva'=>$product->getKuva(),
-                'artisaani'=>$product->getArtisaani(),
+                'artesaaani'=>$product->getArtesaani(),
                 'kuvaus'=>$product->getKuvaus(),
                 'hinta'=>$product->getHinta(),
                 'kategoria'=>$product->getKategoria(),
@@ -52,7 +52,7 @@ class ProductController extends AbstractController
         $data = json_decode($request->getContent(),true);
         $newProduct = new Product();
         $newProduct->setNimi($data["nimi"]);
-        $newProduct->setArtisaani($data["artisaani"]);
+        $newProduct->setArtesaani($data["artesaani"]);
         $newProduct->setHinta($data["hinta"]);
         $newProduct->setKategoria($data["kategoria"]);
         $newProduct->setKuva($data["kuva"]);
@@ -77,7 +77,7 @@ class ProductController extends AbstractController
                 'kuva'=> $product->getKuva(),
                 'kuvaus'=> $product->getKuvaus(),
                 'hinta'=> $product->getHinta(),
-                'artisaani'=> $product->getArtisaani(),
+                'artesaani'=> $product->getArtesaani(),
                 'kategoria'=> $product->getKategoria()
             ]);
         }
