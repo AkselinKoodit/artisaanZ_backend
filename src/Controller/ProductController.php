@@ -99,4 +99,32 @@ class ProductController extends AbstractController
                 ]);
             }
     }
+    /**
+     * @Route("/product/edit/{id}/{nimi}&{kuvaus}&{hinta}&{artesaani}&{kategoria}", name="edit_a_recipe", methods:{"PUT"})
+     */
+
+    public function editProduct($id, $nimi, $kuvaus, $hinta, $artesaani, $kategoria)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+//            $product->setKuva($kuva);
+            $product->setNimi($nimi);
+            $product->setKuvaus($kuvaus);
+            $product->setHinta($hinta);
+            $product->setArtesaani($artesaani);
+            $product->setKategoria($kategoria);
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+
+    }
 }
