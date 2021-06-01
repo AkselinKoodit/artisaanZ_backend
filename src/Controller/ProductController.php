@@ -100,9 +100,9 @@ class ProductController extends AbstractController
             }
     }
     /**
-     * @Route("/product/edit/{id}/{nimi}", name="edit_a_product", methods:{"PUT"})
+     * @Route("/product/editnimi/{id}/{nimi}", name="edit_a_nimi")
      */
-    public function editProduct($id, $nimi)
+    public function muokkaaNimi($id, $nimi)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
@@ -113,6 +113,99 @@ class ProductController extends AbstractController
             );
         } else {
             $product->setNimi($nimi);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+
+    }
+    /**
+     * @Route("/product/editkuvaus/{id}/{kuvaus}")
+     */
+    public function muokkaaKuvaus($id, $kuvaus)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setKuvaus($kuvaus);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+
+    }
+    /**
+     * @Route("/product/editkategoria/{id}/{kategoria}")
+     */
+    public function muokkaaKategoria($id, $kategoria)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setKategoria($kategoria);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+
+    }
+
+    /**
+     * @Route("/product/edithinta/{id}/{hinta}")
+     */
+    public function muokkaaHinta($id, $hinta)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setHinta($hinta);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/product/editartesaani/{id}/{artesaani}", name="edit_a_artesaani")
+     */
+    public function muokkaaArtesaani($id, $artesaani)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setArtesaani($artesaani);
 
             $entityManager->flush();
 
