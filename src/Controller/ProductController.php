@@ -95,36 +95,31 @@ class ProductController extends AbstractController
                 $entityManager->flush();
 
                 return $this->json([
-                    'message'=>'Poistettiin resepti jonka id ' . $id
+                    'message'=>'Poistettiin tuote jonka id ' . $id
                 ]);
             }
     }
-//    /**
-//     * @Route("/product/edit/{id}/{nimi}&{kuvaus}&{hinta}&{artesaani}&{kategoria}", name="edit_a_recipe", methods:{"PUT"})
-//     */
-//
-//    public function editProduct($id, $nimi, $kuvaus, $hinta, $artesaani, $kategoria)
-//    {
-//        $entityManager = $this->getDoctrine()->getManager();
-//        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
-//
-//        if (!$product) {
-//            throw $this->createNotFoundException(
-//                'Ei tuotetta jonka id = ' . $id
-//            );
-//        } else {
-////            $product->setKuva($kuva);
-//            $product->setNimi($nimi);
-//            $product->setKuvaus($kuvaus);
-//            $product->setHinta($hinta);
-//            $product->setArtesaani($artesaani);
-//            $product->setKategoria($kategoria);
-//            $entityManager->flush();
-//
-//            return $this->json([
-//                'message' => 'Edited a recipe with id' . $id
-//            ]);
-//        }
-//
-//    }
+    /**
+     * @Route("/product/edit/{id}/{nimi}", name="edit_a_product", methods:{"PUT"})
+     */
+    public function editProduct($id, $nimi)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setNimi($nimi);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited a recipe with id' . $id
+            ]);
+        }
+
+    }
 }
