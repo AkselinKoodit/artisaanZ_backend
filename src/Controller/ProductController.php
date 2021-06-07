@@ -117,7 +117,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id' . $id
+                'message' => 'Edited product with id' . $id
             ]);
         }
 
@@ -140,7 +140,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id' . $id
+                'message' => 'Edited product with id' . $id
             ]);
         }
 
@@ -163,7 +163,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id' . $id
+                'message' => 'Edited product with id' . $id
             ]);
         }
 
@@ -187,7 +187,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id' . $id
+                'message' => 'Edited product with id' . $id
             ]);
         }
     }
@@ -210,7 +210,30 @@ class ProductController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'message' => 'Edited a recipe with id' . $id
+                'message' => 'Edited product with id' . $id
+            ]);
+        }
+
+    }
+    /**
+     * @Route("/product/editkuva/{id}/{kuva}", name="edit_a_kuva")
+     */
+    public function muokkaaKuva($id, $kuva)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'Ei tuotetta jonka id = ' . $id
+            );
+        } else {
+            $product->setKuva($kuva);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited product with id' . $id
             ]);
         }
 
