@@ -21,8 +21,10 @@ class SellerController extends AbstractController
     }
 
     /**
-     * @Route("/seller/all", name="get_all_selllers", methods={"GET"})
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @Route("/seller/all", name="get_all_sellers", methods={"GET"})
      */
+
     public function getAllSellers() {
         $sellers = $this->getDoctrine()->getRepository(Seller::class)->findAll();
         $response = [];
