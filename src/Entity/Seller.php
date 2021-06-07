@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class Seller
 {
     /**
      * @ORM\Id
