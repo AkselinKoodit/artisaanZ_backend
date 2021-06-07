@@ -83,7 +83,7 @@ class ProductController extends AbstractController
         }
     }
     /**
-     * @Route("/product/remove/{id}", name="remove_a_recipe")
+     * @Route("/product/remove/{id}", name="remove_a_product")
      */
     public function removeProduct($id) {
         $entityManager = $this->getDoctrine()->getManager();

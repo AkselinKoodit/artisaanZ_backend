@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +58,48 @@ class UserController extends AbstractController
         $entityManager->flush();
 
         return new Response('Adding new user...' . $newUser->getId());
-
     }
+
+    /**
+     * @Route("user/remove/{id}", name="remove_user")
+     */
+    public function removeUser($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+            if (!$user) {
+                throw $this->createNotFoundException('Juu ei tommosta käyttäjää ookkaan jonka id ois ' . $id);
+            } else {
+                $entityManager->remove($user);
+                $entityManager->flush();
+
+                return $this->json([
+                    'message'=>'Poistettiin käyttäjä tunnuksella ' . $id
+                ]);
+            }
+    }
+
+    /**
+     * @Route("/user/find/{id}", name="find_user", methods={"GET"})
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function findUser($id, Request $request) {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        if (!$user) {
+            throw $this->createNotFoundException('Hmm tarkastappa tuo id, ei nääs mitään löydy tällä: ' . $id);
+        } else {
+            return $this->json([
+                'id'=> $user->getId(),
+                'nimi'=> $user->getNimi(),
+                'esittely'=> $user->getEsittely(),
+                'tuotteet'=> $user->getTuotteet(),
+                'tuotteita'=>$user->getTuotteita(),
+                'username'=>$user->getUsername(),
+                'password'=>$user->getPassword()
+            ]);
+        }
+    }
+
+
 }
