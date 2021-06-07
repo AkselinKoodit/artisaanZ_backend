@@ -87,7 +87,7 @@ class UserController extends AbstractController
     public function findUser($id, Request $request) {
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         if (!$user) {
-            throw $this->createNotFoundException('Hmm tarkastappa tuo id, ei nääs mitään löydy tällä: ' . $id);
+            throw $this->createNotFoundException('Hmm tarkistappa tuo id, ei nääs mitään löydy tällä: ' . $id);
         } else {
             return $this->json([
                 'id'=> $user->getId(),
