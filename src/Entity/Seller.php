@@ -27,10 +27,10 @@ class Seller
      */
     private $esittely;
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $tuotteet = [];
+//    /**
+//     * @ORM\Column(type="array", nullable=true)
+//     */
+//    private $tuotteet = [];
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
@@ -42,15 +42,15 @@ class Seller
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $passwordCheck;
+//    /**
+//     * @ORM\Column(type="string", length=30, nullable=true)
+//     */
+//    private $passwordCheck;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $tuotteita;
+//    /**
+//     * @ORM\Column(type="integer", nullable=true)
+//     */
+//    private $tuotteita;
 
     public function getId(): ?int
     {
@@ -81,17 +81,17 @@ class Seller
         return $this;
     }
 
-    public function getTuotteet(): ?array
-    {
-        return $this->tuotteet;
-    }
-
-    public function setTuotteet(?array $tuotteet): self
-    {
-        $this->tuotteet = $tuotteet;
-
-        return $this;
-    }
+//    public function getTuotteet(): ?array
+//    {
+//        return $this->tuotteet;
+//    }
+//
+//    public function setTuotteet(?array $tuotteet): self
+//    {
+//        $this->tuotteet = $tuotteet;
+//
+//        return $this;
+//    }
 
     public function getUsername(): ?string
     {
@@ -117,27 +117,27 @@ class Seller
         return $this;
     }
 
-    public function getPasswordCheck(): ?string
-    {
-        return $this->passwordCheck;
-    }
+//    public function getPasswordCheck(): ?string
+//    {
+//        return $this->passwordCheck;
+//    }
+//
+//    public function setPasswordCheck(?string $passwordCheck): self
+//    {
+//        $this->passwordCheck = $passwordCheck;
+//
+//        return $this;
+//    }
 
-    public function setPasswordCheck(?string $passwordCheck): self
-    {
-        $this->passwordCheck = $passwordCheck;
-
-        return $this;
-    }
-
-    public function getTuotteita(): ?int
-    {
-        return $this->tuotteita;
-    }
-
-    public function setTuotteita(?int $tuotteita): self
-    {
-        $this->tuotteita = $tuotteita;
-
-        return $this;
-    }
+//    public function getTuotteita(): ?int
+//    {
+//        return $this->tuotteita;
+//    }
+//
+//    public function setTuotteita(?int $tuotteita): self
+//    {
+//        $this->tuotteita = $tuotteita;
+//
+//        return $this;
+//    }
 }
