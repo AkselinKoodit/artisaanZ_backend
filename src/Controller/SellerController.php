@@ -33,7 +33,7 @@ class SellerController extends AbstractController
                 'id'=>$seller->getId(),
                 'nimi'=>$seller->getNimi(),
                 'esittely'=>$seller->getEsittely(),
-                'tuotteet'=>$seller->getTuotteet(),
+//                'tuotteet'=>$seller->getTuotteet(),
 //                'tuotteita'=>$seller->getTuotteita(),
                 'username'=>$seller->getUsername(),
                 'password'=>$seller->getPassword()
@@ -51,7 +51,7 @@ class SellerController extends AbstractController
         $newSeller = new Seller();
         $newSeller->setNimi($data["nimi"]);
         $newSeller->setEsittely($data["esittely"]);
-        $newSeller->setTuotteet($data["tuotteet"]);
+//        $newSeller->setTuotteet($data["tuotteet"]);
 //        $newSeller->setTuotteita($data["tuotteita"]);
         $newSeller->setUsername($data["username"]);
         $newSeller->setPassword($data["password"]);
@@ -95,7 +95,7 @@ class SellerController extends AbstractController
                 'id'=> $seller->getId(),
                 'nimi'=> $seller->getNimi(),
                 'esittely'=> $seller->getEsittely(),
-                'tuotteet'=> $seller->getTuotteet(),
+//                'tuotteet'=> $seller->getTuotteet(),
 //                'tuotteita'=>$seller->getTuotteita(),
                 'username'=>$seller->getUsername(),
                 'password'=>$seller->getPassword()
