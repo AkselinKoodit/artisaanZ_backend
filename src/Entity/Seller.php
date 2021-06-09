@@ -27,10 +27,10 @@ class Seller
      */
     private $esittely;
 
-//    /**
-//     * @ORM\Column(type="array", nullable=true)
-//     */
-//    private $tuotteet = [];
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $tuotteet = [];
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
@@ -81,17 +81,17 @@ class Seller
         return $this;
     }
 
-//    public function getTuotteet(): ?array
-//    {
-//        return $this->tuotteet;
-//    }
-//
-//    public function setTuotteet(?array $tuotteet): self
-//    {
-//        $this->tuotteet = $tuotteet;
-//
-//        return $this;
-//    }
+    public function getTuotteet(): ?array
+    {
+        return $this->tuotteet;
+    }
+
+    public function setTuotteet(?array $tuotteet): self
+    {
+        $this->tuotteet = $tuotteet;
+
+        return $this;
+    }
 
     public function getUsername(): ?string
     {
