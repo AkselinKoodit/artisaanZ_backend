@@ -45,39 +45,18 @@ class CartController extends AbstractController
     public function addCartItem(Request $request){
         $entityManager = $this->getDoctrine()->getManager();
         $data = json_decode($request->getContent(), true);
-        $product = $this->getDoctrine()->getRepository(Cart::class)->find($data["nimi"]);
-        if(!$product) {
-            $newCartItem = new Cart();
-            $newCartItem->setNimi($data["nimi"]);
-            $newCartItem->setHinta($data["hinta"]);
-            $newCartItem->setQty($data["qty"]);
-            $newCartItem->setKategoria($data["kategoria"]);
-            $newCartItem->setArtesaani($data["artesaani"]);
 
-            $entityManager->persist($newCartItem);
-            $entityManager->flush();
+        $newCartItem = new Cart();
+        $newCartItem->setNimi($data["nimi"]);
+        $newCartItem->setHinta($data["hinta"]);
+        $newCartItem->setQty($data["qty"]);
+        $newCartItem->setKategoria($data["kategoria"]);
+        $newCartItem->setArtesaani($data["artesaani"]);
 
-            return new Response('added new item to cart with id ' . $newCartItem->getId());
-        } else {
-            incCartItem($data['nimi']);
-        }
+        $entityManager->persist($newCartItem);
+        $entityManager->flush();
 
-
-    }
-
-    /**
-     * @Route("/cart/{id}", name="inc-cartitem", methods={"PUT"})
-     */
-    public function incCartItem($nimi, Request $request) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $cartItem = $this->getDoctrine()->getRepository(Cart::class)->find($nimi);
-        if(!$cartItem) {
-            throw $this->createNotFoundException('Nothing found in cart by name ' . $nimi);
-        } else {
-            return $this->json([
-                'qty'=>$cartItem->getQty()+1,
-            ]);
-        }
+        return new Response('added new item to cart with id ' . $newCartItem->getId());
     }
 
     /**
