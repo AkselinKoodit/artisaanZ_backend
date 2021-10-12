@@ -28,12 +28,13 @@ class CartController extends AbstractController
         $response = [];
         foreach($cart as $cartItem) {
             $response[] = array(
-                'id'=>$cartItem->getId(),
                 'nimi'=>$cartItem->getNimi(),
+                'kuva'=>$cartItem->getKuva(),
+                'artesaani'=>$cartItem->getArtesaani(),
+                'kuvaus'=>$cartItem->getKuvaus(),
                 'hinta'=>$cartItem->getHinta(),
-                'qty'=>$cartItem->getQty(),
                 'kategoria'=>$cartItem->getKategoria(),
-                'artesaani'=>$cartItem->getArtesaani()
+                'id'=>$cartItem->getId()
             );
         }
         return $this->json($response);
@@ -48,10 +49,11 @@ class CartController extends AbstractController
 
         $newCartItem = new Cart();
         $newCartItem->setNimi($data["nimi"]);
-        $newCartItem->setHinta($data["hinta"]);
-        $newCartItem->setQty($data["qty"]);
-        $newCartItem->setKategoria($data["kategoria"]);
         $newCartItem->setArtesaani($data["artesaani"]);
+        $newCartItem->setHinta($data["hinta"]);
+        $newCartItem->setKategoria($data["kategoria"]);
+        $newCartItem->setKuva($data["kuva"]);
+        $newCartItem->setKuvaus($data["kuvaus"]);
 
         $entityManager->persist($newCartItem);
         $entityManager->flush();

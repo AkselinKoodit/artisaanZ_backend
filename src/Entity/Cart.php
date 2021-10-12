@@ -18,9 +18,19 @@ class Cart
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="array")
+     */
+    private $kuva = [];
+
+    /**
+     * @ORM\Column(type="string", length=40)
      */
     private $nimi;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $kuvaus;
 
     /**
      * @ORM\Column(type="integer")
@@ -28,23 +38,30 @@ class Cart
     private $hinta;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $qty;
-
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $kategoria;
-
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50)
      */
     private $artesaani;
+
+    /**
+     * @ORM\Column(type="string", length=60)
+     */
+    private $kategoria;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getKuva(): ?array
+    {
+        return $this->kuva;
+    }
+
+    public function setKuva(array $kuva): self
+    {
+        $this->kuva = $kuva;
+
+        return $this;
     }
 
     public function getNimi(): ?string
@@ -55,6 +72,18 @@ class Cart
     public function setNimi(string $nimi): self
     {
         $this->nimi = $nimi;
+
+        return $this;
+    }
+
+    public function getKuvaus(): ?string
+    {
+        return $this->kuvaus;
+    }
+
+    public function setKuvaus(string $kuvaus): self
+    {
+        $this->kuvaus = $kuvaus;
 
         return $this;
     }
@@ -71,14 +100,14 @@ class Cart
         return $this;
     }
 
-    public function getQty(): ?int
+    public function getArtesaani(): ?string
     {
-        return $this->qty;
+        return $this->artesaani;
     }
 
-    public function setQty(?int $qty): self
+    public function setArtesaani(string $artesaani): self
     {
-        $this->qty = $qty;
+        $this->artesaani = $artesaani;
 
         return $this;
     }
@@ -88,21 +117,9 @@ class Cart
         return $this->kategoria;
     }
 
-    public function setKategoria(?string $kategoria): self
+    public function setKategoria(string $kategoria): self
     {
         $this->kategoria = $kategoria;
-
-        return $this;
-    }
-
-    public function getArtesaani(): ?string
-    {
-        return $this->artesaani;
-    }
-
-    public function setArtesaani(?string $artesaani): self
-    {
-        $this->artesaani = $artesaani;
 
         return $this;
     }
