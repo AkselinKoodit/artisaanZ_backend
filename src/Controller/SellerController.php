@@ -33,9 +33,7 @@ class SellerController extends AbstractController
                 'id'=>$seller->getId(),
                 'nimi'=>$seller->getNimi(),
                 'esittely'=>$seller->getEsittely(),
-//                'tuotteet'=>$seller->getTuotteet(),
-//                'tuotteita'=>$seller->getTuotteita(),
-                'username'=>$seller->getUsername(),
+                'email'=>$seller->getEmail(),
                 'password'=>$seller->getPassword()
             );
         }
@@ -51,9 +49,7 @@ class SellerController extends AbstractController
         $newSeller = new Seller();
         $newSeller->setNimi($data["nimi"]);
         $newSeller->setEsittely($data["esittely"]);
-//        $newSeller->setTuotteet($data["tuotteet"]);
-//        $newSeller->setTuotteita($data["tuotteita"]);
-        $newSeller->setUsername($data["username"]);
+        $newSeller->setEmail($data["email"]);
         $newSeller->setPassword($data["password"]);
 
         $entityManager->persist($newSeller);
@@ -95,9 +91,7 @@ class SellerController extends AbstractController
                 'id'=> $seller->getId(),
                 'nimi'=> $seller->getNimi(),
                 'esittely'=> $seller->getEsittely(),
-//                'tuotteet'=> $seller->getTuotteet(),
-//                'tuotteita'=>$seller->getTuotteita(),
-                'username'=>$seller->getUsername(),
+                'email'=>$seller->getEmail(),
                 'password'=>$seller->getPassword()
             ]);
         }

@@ -27,30 +27,17 @@ class Seller
      */
     private $esittely;
 
-//    /**
-//     * @ORM\Column(type="array", nullable=true)
-//     */
-//    private $tuotteet = [];
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $username;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $password;
 
-//    /**
-//     * @ORM\Column(type="string", length=30, nullable=true)
-//     */
-//    private $passwordCheck;
-
-//    /**
-//     * @ORM\Column(type="integer", nullable=true)
-//     */
-//    private $tuotteita;
 
     public function getId(): ?int
     {
@@ -95,12 +82,12 @@ class Seller
 
     public function getUsername(): ?string
     {
-        return $this->username;
+        return $this->email;
     }
 
-    public function setUsername(?string $username): self
+    public function setUsername(?string $email): self
     {
-        $this->username = $username;
+        $this->email = $email;
 
         return $this;
     }
