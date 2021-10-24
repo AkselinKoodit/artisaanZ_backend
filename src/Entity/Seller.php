@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\SellerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass=SellerRepository::class)
  */
 class Seller
 {
@@ -80,12 +80,12 @@ class Seller
 //        return $this;
 //    }
 
-    public function getUsername(): ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setUsername(?string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -103,28 +103,4 @@ class Seller
 
         return $this;
     }
-
-//    public function getPasswordCheck(): ?string
-//    {
-//        return $this->passwordCheck;
-//    }
-//
-//    public function setPasswordCheck(?string $passwordCheck): self
-//    {
-//        $this->passwordCheck = $passwordCheck;
-//
-//        return $this;
-//    }
-
-//    public function getTuotteita(): ?int
-//    {
-//        return $this->tuotteita;
-//    }
-//
-//    public function setTuotteita(?int $tuotteita): self
-//    {
-//        $this->tuotteita = $tuotteita;
-//
-//        return $this;
-//    }
 }

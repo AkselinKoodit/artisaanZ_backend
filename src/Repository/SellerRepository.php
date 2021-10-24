@@ -12,15 +12,16 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Seller[]    findAll()
  * @method Seller[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository
+class SellerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Seller::class);
     }
 
+
     // /**
-    //  * @return User[] Returns an array of User objects
+    //  * @return Seller[] Returns an array of Seller objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +38,7 @@ class UserRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?User
+    public function findOneBySomeField($value): ?Seller
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')
