@@ -96,6 +96,29 @@ class SellerController extends AbstractController
             ]);
         }
     }
+    /**
+     * @Route("/seller/editemail/{id}/{email}", name="edit_email")
+     */
+    public function muokkaaNimi($id, $email)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $seller = $this->getDoctrine()->getRepository(Seller::class)->find($id);
+
+        if (!$seller) {
+            throw $this->createNotFoundException(
+                'Ei myyjää jonka id = ' . $id
+            );
+        } else {
+            $seller->setEmail($email);
+
+            $entityManager->flush();
+
+            return $this->json([
+                'message' => 'Edited seller with id ' . $id
+            ]);
+        }
+
+    }
 
 
 
